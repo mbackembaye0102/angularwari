@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">DAARA-DJI</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+       
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Administrateur
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a  *ngIf="isAdmin()" class="dropdown-item" href="#">Create User</a>
+                <a  *ngIf="isSuperAdmin()" class="dropdown-item" href="#">Create Partener</a>
+                <a  *ngIf="isAdminPartenaire()" class="dropdown-item" href="#">Show Partener</a>
+                <a *ngIf="isSuperAdmin()" class="dropdown-item" href="#">Create Account</a>
+                <a *ngIf="isCaissier()" class="dropdown-item" href="#">Account User</a>
+                <a *ngIf="isUser()" class="dropdown-item" href="#">Money Deposit</a>
+              </div>
+            </li>
+      </ul>
+      <ul class="navbar-nav">
+          <a class="nav-link" (click)="logOut()" >Se Deconnecter</a>
+      </ul>
+  
+    </div>
+  </nav>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
