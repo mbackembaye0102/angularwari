@@ -1,0 +1,7 @@
+<app-header></app-header>
+<ul list-group *ngIf="partenaires">
+  <li *ngFor="let p of partenaires" class="list-group-item">
+    {{p.entreprise}}
+  </li>
+</ul>
+ 

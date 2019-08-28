@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpHeaders } from '@angular/common/http';
 
 
 @Component({
@@ -23,14 +24,17 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser (data) {
+
    // console.log(this.loginUserData)
     this.auth.login(data)
     .subscribe(
       res => {
         //console.log(res);
        // localStorage.setItem('token', res.token);
-       let jwt=res.body["token"];
-      this.auth.saveToken(jwt);  //   console.log(obJWT);
+       //let jwt=res.body["token"];
+     // let jwt=res.headers.get('Authorization');
+      //console.log(jwt);
+      //this.auth.saveToken(jwt);  //   console.log(obJWT);
        //this.jwt=res.token;
        // this.parseJWT();
         this._router.navigate(['/register'])

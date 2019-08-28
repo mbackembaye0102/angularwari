@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
-import { Router } from '@angular/router'
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Http, Headers, Response} from '@angular/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
-
-@Injectable()
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthService {
 
  host:string = "http://localhost:8000/api/login";
@@ -11,25 +16,46 @@ export class AuthService {
   username:string;
   roles: Array<string>;
 
-  constructor(private http: HttpClient 
+  constructor(private http: Http
             ) { }
+//private headers ={headers: new Headers().set('Authorization', 'Bearer '+localStorage.getItem('token'))};
+  login(data) : Observable<boolean>{
+    let headers =new Headers();
+    headers.append('content-type', 'application/x-www-form-urlencoded');
+    return this.http.post(this.host, data,{headers: headers})
+    .map(
+      (resp: Response)=>{
+        const token= resp.json().token;
+        console.log(resp);
+        this.jwt=token;
+        localStorage.setItem('token',token);
+        this.parseJWT();
+        return true;
+      }
+    ).catch(this.handleError);
 
-  login(data) {
-    return this.http.post(this.host, data,{observe: 'response'});
   }
 
-saveToken(jwt:string){
-  localStorage.setItem('token',jwt);
-  this.jwt=jwt;
-  this.parseJWT();
+  private handleError(error: Response){
+    return Observable.throw(error.json() || 'server error');
+
+  }
+// saveToken(jwt:string){
+//   localStorage.setItem('token',jwt);
+//  // this.jwt=jwt;
+//   this.parseJWT();
+// }
+
+public getToken():string {
+return localStorage.getItem('token');
 }
 
 parseJWT(){
   let jwtHelper= new JwtHelperService();
-  let objWT=jwtHelper.decodeToken(this.jwt);
-  console.log(objWT);
-  this.username=objWT.obj;
-  this.roles=objWT.roles;
+  let objWT=jwtHelper.decodeToken(this.getToken());
+  //console.log(objWT);
+ // this.username=objWT.obj;
+   this.roles=objWT.roles;
 }
 
 
@@ -61,7 +87,8 @@ isAdmin(){
 
 }
 isAuthenticated(){
-return this.roles && (this.isAdmin() || this.isUser());
+return this.roles && (this.isAdmin() || this.isUser()
+);
 
 }
 
