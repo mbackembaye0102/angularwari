@@ -13,7 +13,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a  *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/user">Create User</a>
-                <a  *ngIf="isAdmin()" class="dropdown-item" routerLink="/partenaire">Create Partener</a>
+                <a  *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/partenaire">Create Partener</a>
                 <a  *ngIf="isAdminPartenaire()" class="dropdown-item" routerLink="/partenaire">Show Partener</a>
                 <a *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/compte">Create Account</a>
                 <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/compte">Account User</a>
@@ -31,3 +31,4 @@
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+

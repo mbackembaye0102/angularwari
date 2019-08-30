@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-// import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Http, Headers, Response} from '@angular/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs/Observable';
@@ -16,45 +16,55 @@ export class AuthService {
   username:string;
   roles: Array<string>;
 
-  constructor(private http: Http
+  constructor(private http: HttpClient
             ) { }
-//private headers ={headers: new Headers().set('Authorization', 'Bearer '+localStorage.getItem('token'))};
-  login(data) : Observable<boolean>{
-    let headers =new Headers();
-    headers.append('content-type', 'application/x-www-form-urlencoded');
-    return this.http.post(this.host, data,{headers: headers})
-    .map(
-      (resp: Response)=>{
-        const token= resp.json().token;
-        console.log(resp);
-        this.jwt=token;
-        localStorage.setItem('token',token);
-        this.parseJWT();
-        return true;
-      }
-    ).catch(this.handleError);
+//private headers ={headers: new HttpHeaders().set('Authorization', 'Bearer '+localStorage.getItem('token'))};
+  login(data)/*: Observable<boolean>*/{
+    //let headers =new Headers();
+
+  //    headers.append('content-type', 'application/x-www-form-urlencoded');
+  //   //  headers.append('Authorization', 'Bearer '+this.)
+  //   return this.http.post(this.host, data,{headers: headers})
+  //   .map(
+  //     (resp: Response)=>{
+  //    const token= resp.json().token;
+  //       alert(token);
+  //       this.jwt=token;
+    
+  //    localStorage.setItem('token',token);
+       
+  //  this.parseJWT();
+  //       return true;
+  //     }
+  //   ).catch(this.handleError);
+  
+   return this.http.post(this.host, data,{observe: 'response'});
 
   }
 
-  private handleError(error: Response){
-    return Observable.throw(error.json() || 'server error');
+  // private handleError(error: Response){
+  //   return Observable.throw(error.json() || 'server error');
+  // }
+saveToken(jwt:string){
+  localStorage.setItem('token',jwt);
+ // const authorization=localStorage.getItem('token');
 
-  }
-// saveToken(jwt:string){
-//   localStorage.setItem('token',jwt);
-//  // this.jwt=jwt;
-//   this.parseJWT();
-// }
+ this.jwt=jwt;
+  this.parseJWT();
+  //return authorization;
+}
 
 public getToken():string {
-return localStorage.getItem('token');
+var local=localStorage.getItem('token');
+//alert (local);
+ return local;
 }
 
 parseJWT(){
-  let jwtHelper= new JwtHelperService();
-  let objWT=jwtHelper.decodeToken(this.getToken());
+  const jwtHelper= new JwtHelperService();
+  const objWT=jwtHelper.decodeToken(this.jwt);
   //console.log(objWT);
- // this.username=objWT.obj;
+  this.username=objWT.obj;
    this.roles=objWT.roles;
 }
 
@@ -90,6 +100,11 @@ isAuthenticated(){
 return this.roles && (this.isAdmin() || this.isUser()
 );
 
+}
+
+loadToken(){
+  this.jwt= localStorage.getItem('token');
+  this.parseJWT();
 }
 
 logOut(){

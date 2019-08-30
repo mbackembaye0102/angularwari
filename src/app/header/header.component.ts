@@ -6,12 +6,13 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent  {
 
   constructor(private auth: AuthService) { }
 
-  ngOnInit() {
-  }
+  // ngOnInit() {
+  //   this.auth.loadToken();
+  // }
 
 
   isSuperAdmin(){

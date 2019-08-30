@@ -42,10 +42,9 @@ import { InterceptorService } from './services/interceptor.service';
 
   ],
   providers: [AuthService, PartenaireService,
-  {
-    provide: HTTP_INTERCEPTORS, useClass: InterceptorService,
-    multi:true
-  }],
+    { provide: HTTP_INTERCEPTORS,
+       useClass: InterceptorService,
+       multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

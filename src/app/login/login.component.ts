@@ -24,17 +24,18 @@ export class LoginComponent implements OnInit {
   }
 
   loginUser (data) {
-
    // console.log(this.loginUserData)
     this.auth.login(data)
     .subscribe(
       res => {
         //console.log(res);
        // localStorage.setItem('token', res.token);
-       //let jwt=res.body["token"];
-     // let jwt=res.headers.get('Authorization');
+      let jwt=res.body['token'];
+     // alert(jwt);
+
+     //let jwt=res.headers.get('Authorization');
       //console.log(jwt);
-      //this.auth.saveToken(jwt);  //   console.log(obJWT);
+     this.auth.saveToken(jwt);  //   console.log(obJWT);
        //this.jwt=res.token;
        // this.parseJWT();
         this._router.navigate(['/register'])
