@@ -46,12 +46,10 @@ fileToUpload: File=null;
      this.users.addUser(data, this.fileToUpload)
      .subscribe(
        data=>{
-         console.log('done');
-         
+         console.log('Utilisateur crée avec succés');
         //  this.utilisateur=null;
         //  this.fileToUpload=null;
          //this.router.navigate(['/user'])
-
        }, err=>{
         console.log(err);
        }

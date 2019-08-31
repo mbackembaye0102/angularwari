@@ -1,6 +1,84 @@
 <app-header></app-header>
 <br> <br>
+<h1 align="center"> Add Partener</h1>
+<br>
+<form #imageForm=ngForm (ngSubmit)="onsubmit(imageForm.value)">
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Entreprise</label>
+        <div class="col">
+        <input type="text" #entreprise ngModel required="required" name="entreprise" class="form-control" id="username" placeholder="Entreprise">
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Raison Social</label>
+        <div class="col">
+        <input type="text" #raisonSocial ngModel required="required" name="raisonsocial" class="form-control" id="username" placeholder="Raison Social">
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Ninea</label>
+        <div class="col">
+        <input type="text" #ninea ngModel required="required" name="ninea" class="form-control" id="username" placeholder="NINEA">
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Adresse</label>
+        <div class="col">
+        <input type="text" #adresse ngModel required="required" name="adresse" class="form-control" id="username" placeholder="Adresse">
+        </div>
+    </div>
+    
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
+        <div class="col">
+        <input type="text" #username ngModel required="required" name="username" class="form-control" id="username" placeholder="Username">
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Prenom</label>
+        <div class="col">
+        <input type="text" #prenom ngModel required="required" name="prenom" class="form-control" id="inputPassword3" placeholder="Taper Votre Prenom">
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Nom</label>
+        <div class="col">
+        <input type="text" required="required" #nom ngModel name="nom" class="form-control" id="inputPassword3" placeholder="Taper Votre nom">
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone</label>
+        <div class="col">
+        <input type="number" #telephone ngModel required="required" min=700000000 max=800000000 name="telephone" class="form-control" id="inputPassword3" placeholder="Téléphone">
+        </div>
+    </div>
+ 
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label"></label>  
+      <div class="col">
+            <img alt="" [src]="imageUrl"  style="width: 250px; height:200px">
 
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Photo</label>
+        <div class="col">
+        <input name="photo" #photo ngModel type="file" #Image accept="image/" (change)="handleFileInput($event.target.files)">
+        </div>
+    </div>
+
+    
+ 
+    
+    
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <div class="col">
+        <button type="submit" name="valider" class="btn btn-primary" [disabled]="Image.value=='' || !imageForm.valid" >AJOUTER</button>
+        </div>
+    </div>
+    
+    </form>
+<br><br>
 <div class="panel panel-default">
     <div class="panel-heading"> <h3 align="center">Liste des partenaires</h3></div>
     <div class="panel-body">

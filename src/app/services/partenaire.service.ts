@@ -22,4 +22,21 @@ export class PartenaireService {
    return  this.http.get<IPartenaire[]>(this.url);
 }
 
+
+addPartenaire(partener, fileToUpload){
+  const host = "http://localhost:8000/api/partenaires";
+
+  const formData: FormData= new FormData();
+  formData.append('entreprise', partener.entreprise);
+  formData.append('raisonSocial', partener.raisonSocial);
+  formData.append('ninea', partener.ninea);
+  formData.append('adresse', partener.adresse);
+  formData.append('username', partener.username);
+  formData.append('prenom', partener.prenom);
+  formData.append('nom', partener.nom);
+  formData.append('telephone', partener.telephone);
+
+  formData.append('imageName', fileToUpload, fileToUpload.name);
+  return this.http.post(host, formData);
+}
 }
