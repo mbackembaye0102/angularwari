@@ -48,6 +48,7 @@ export class AuthService {
 saveToken(jwt:string){
   localStorage.setItem('token',jwt);
  // const authorization=localStorage.getItem('token');
+ 
 
  this.jwt=jwt;
   this.parseJWT();
@@ -66,8 +67,14 @@ parseJWT(){
   //console.log(objWT);
   this.username=objWT.obj;
    this.roles=objWT.roles;
+   localStorage.setItem('role', objWT.roles);
+   localStorage.setItem('username', objWT.username)
+
 }
 
+getRole(){
+  return localStorage.getItem('role');
+}
 
 isSuperAdmin(){
   return this.roles.indexOf('ROLE_SUPER_ADMIN')>=0;
