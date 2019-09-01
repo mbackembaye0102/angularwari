@@ -1,5 +1,46 @@
 <app-header></app-header>
 
-<p>
-  compte works!
-</p>
+<h1 align="center"> Create Account</h1>
+<br>
+<form #c=ngForm (ngSubmit)="onsubmit(c.value)">
+
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">partenaire</label>
+        <div class="col">
+        <select class="form-control" #compte ngModel name="compte">
+                <option *ngFor="let p of partener" value="{{p.id}}">{{p.entreprise}}</option>
+        </select>
+        </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <div class="col">
+        <button type="submit" name="valider" class="btn btn-primary"  >ATTRIBUER UN COMPTE</button>
+        </div>
+    </div>
+    </form>
+
+
+    <br><br>
+<div class="panel panel-default">
+    <div class="panel-heading"> <h3 align="center">Liste des Comptes</h3></div>
+    <div class="panel-body">
+      <table class="table">
+        <tr class="table-info">
+          <th >ID</th>
+          <th> NUMERO COMPTE</th>
+          <th> SOLDE</th>
+          <th>PARTENAIRE</th>
+
+        </tr>
+        <tr *ngFor="let c of comptes" >
+            <td>{{c.id}}</td>
+            <td>{{c.numeroCompte}}</td>
+            <td>{{c.solde}}</td>
+            <td>{{c.partenaire}}</td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+ 
+    

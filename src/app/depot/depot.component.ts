@@ -8,9 +8,11 @@ import { CompteService } from '../services/compte.service';
 })
 export class DepotComponent implements OnInit {
 comptes;
-  constructor(private account: CompteService) { }
+depots=[];
+constructor(private account: CompteService) { }
 
   ngOnInit() {
+    
     this.account.getAllCompte().subscribe(
       res=>{
         console.log(res);
@@ -19,7 +21,19 @@ comptes;
       }, err=>{
         console.log(err);
       }
+    ) ;
+
+        
+    this.account.getAllDepot().subscribe(
+      res=>{
+        console.log(res);
+        this.depots=res
+    
+      }, err=>{
+        console.log(err);
+      }
     ) 
+
   }
 
   onsubmit (data:any){

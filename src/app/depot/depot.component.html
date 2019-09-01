@@ -25,4 +25,28 @@
     </div>
     </form>
 
+
+    <br><br>
+<div class="panel panel-default">
+    <div class="panel-heading"> <h3 align="center">Liste des Depôts</h3></div>
+    <div class="panel-body">
+      <table class="table">
+        <tr class="table-info">
+          <th >MONTANT</th>
+          <th>DATE DEPOT</th>
+          <th> COMPTE</th>
+          <th>CAISSIER</th>
+
+        </tr>
+        <tr *ngFor="let d of depots" >
+            <td>{{d.montant}}</td>
+            <td>{{d.dateDepot}}</td>
+            <td>{{d.compte}}</td>
+            <td>{{d.utilisateur}}</td>
+
+        </tr>
+      </table>
+    </div>
+  </div>
+ 
     

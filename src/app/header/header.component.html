@@ -9,17 +9,52 @@
        
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Administrateur
+                Utilisateur
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a  *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/user">Create User</a>
-                <a  *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/partenaire">Create Partener</a>
-                <a  *ngIf="isAdminPartenaire()" class="dropdown-item" routerLink="/partenaire">Show Partener</a>
-                <a *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/compte">Create Account</a>
-                <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/compte">Account User</a>
-                <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/depot">Money Deposit</a>
+                <a  *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/partenaire">Show Users</a>
+   
               </div>
             </li>
+            <li class="nav-item dropdown">
+                <a  *ngIf="isSuperAdmin()" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Partenaire
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <a  *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/partenaire">Create Partener</a>
+                  <a  *ngIf="isAdminPartenaire()" class="dropdown-item" routerLink="/partenaire">Show Partener</a>
+                
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Compte
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a *ngIf="isSuperAdmin() || isCaissier()" class="dropdown-item" routerLink="/compte">Create Account</a>
+                    <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/compte">Account User</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a *ngIf="isCaissier()" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Depot
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/depot">Money Deposit</a>
+                    </div>
+                  </li>
+                  <li class="nav-item dropdown">
+                      <a *ngIf="isAdminPartenaire() || isUser()"  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Transaction
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a  *ngIf="isUser() || isAdminPartenaire()" class="dropdown-item" routerLink="/envoie">Envoie</a>
+                        <a  *ngIf="isAdminPartenaire() || isUser()" class="dropdown-item" routerLink="/retrait">Retrait</a>
+                        <a  *ngIf="isAdminPartenaire() || isUser()" class="dropdown-item" routerLink="/historique">Historique</a>
+                    
+                      </div>
+                    </li>
       </ul>
       <ul class="navbar-nav">
         <li>
