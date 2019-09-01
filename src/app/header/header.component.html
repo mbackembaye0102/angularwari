@@ -17,7 +17,7 @@
                 <a  *ngIf="isAdminPartenaire()" class="dropdown-item" routerLink="/partenaire">Show Partener</a>
                 <a *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/compte">Create Account</a>
                 <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/compte">Account User</a>
-                <a *ngIf="isUser()" class="dropdown-item" routerLink="/user">Money Deposit</a>
+                <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/depot">Money Deposit</a>
               </div>
             </li>
       </ul>
