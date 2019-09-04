@@ -2,38 +2,69 @@
 <br> <br>
 <h1 align="center"> Add User</h1>
 <br>
-<form #imageForm=ngForm (ngSubmit)="onsubmit(imageForm.value)">
+<form [formGroup]="utilisateur" (ngSubmit)="onsubmit(utilisateur.value)">
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <label for="inputEmail3" class="col-sm-2 col-form-label">Username</label>
         <div class="col">
-        <input type="text" #username ngModel required="required" name="username" class="form-control" id="username" placeholder="Username">
+            <input type="text" formControlName="username" name="username" class="form-control" id="username" placeholder="Username">
+            <div *ngFor="let error of errorMessage.username">
+                <div *ngIf="utilisateur.get('username').hasError(error.type) &&
+                 (utilisateur.get('username').dirty || utilisateur.get('username').touched)">
+                    {{error.message}}
+                </div>
+            </div>
         </div>
     </div>
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Prenom</label>
         <div class="col">
-        <input type="text" #prenom ngModel required="required" name="prenom" class="form-control" id="inputPassword3" placeholder="Taper Votre Prenom">
-        </div>
+        <input type="text" formControlName="prenom"   name="prenom" class="form-control" id="inputPassword3" placeholder="Taper Votre Prenom">
+        <div *ngFor="let error of errorMessage.prenom">
+                <div *ngIf="utilisateur.get('prenom').hasError(error.type) &&
+                 (utilisateur.get('prenom').dirty || utilisateur.get('prenom').touched)">
+                    {{error.message}}
+                </div>
+            </div>    
+    </div>
     </div>
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Nom</label>
         <div class="col">
-        <input type="text" required="required" #nom ngModel name="nom" class="form-control" id="inputPassword3" placeholder="Taper Votre nom">
-        </div>
+        <input type="text"  formControlName="nom"  name="nom" class="form-control" id="inputPassword3" placeholder="Taper Votre nom">
+        <div *ngFor="let error of errorMessage.nom">
+                <div *ngIf="utilisateur.get('nom').hasError(error.type) &&
+                 (utilisateur.get('nom').dirty || utilisateur.get('nom').touched)">
+                    {{error.message}}
+                </div>
+            </div>      
+    </div>
     </div>
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone</label>
         <div class="col">
-        <input type="number" #telephone ngModel required="required" min=700000000 max=800000000 name="telephone" class="form-control" id="inputPassword3" placeholder="Téléphone">
-        </div>
+        <input formControlName="telephone" name="telephone" class="form-control" id="inputPassword3" placeholder="Téléphone">
+        <div *ngFor="let error of errorMessage.telephone">
+                <div *ngIf="utilisateur.get('telephone').hasError(error.type) &&
+                 (utilisateur.get('telephone').dirty || utilisateur.get('telephone').touched)">
+                    {{error.message}}
+                </div>
+            </div>    
+    </div>
     </div>
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Rôle</label>
         <div class="col">
-        <select class="form-control" #profil ngModel name="profil">
-                <option *ngFor="let pr of profils" value="{{pr.id}}">{{pr.libelle}}</option>
-
+                <div *ngFor="let error of errorMessage.profil">
+                        <div *ngIf="utilisateur.get('profil').hasError(error.type) &&
+                         (utilisateur.get('profil').dirty || utilisateur.get('profil').touched)">
+                            {{error.message}}
+                        </div>
+                </div> 
+        <select formControlName="profil" class="form-control" ngDefaultControl>
+            <option *ngFor="let pr of profils" value="{{pr.id}}">{{pr.libelle}}</option>
+             
         </select>
+        
         </div>
     </div>
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
@@ -46,7 +77,7 @@
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">Photo</label>
         <div class="col">
-        <input name="photo" #photo ngModel type="file" #Image accept="image/" (change)="handleFileInput($event.target.files)">
+        <input name="photo"  type="file" #Image accept="image/" (change)="handleFileInput($event.target.files)">
         </div>
     </div>
 
@@ -56,10 +87,45 @@
     
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <div class="col">
-        <button type="submit" name="valider" class="btn btn-primary" [disabled]="Image.value=='' || !imageForm.valid" >AJOUTER</button>
+        <button type="submit" name="valider" class="btn btn-primary" [disabled]="!utilisateur.valid" >AJOUTER</button>
         </div>
     </div>
     
     </form>
+
+    <br><br>
+<div class="panel panel-default">
+    <div class="panel-heading"> <h3 align="center">Liste des Utilisateur</h3></div>
+    <div class="panel-body">
+      <table class="table">
+        <tr class="table-info">
+          <th >Id</th>
+          <th >Username</th>
+          <th> Prenom</th>
+          <th> Nom</th>
+          <th>Telephone</th>
+          <th>Rôle</th>
+          <th>Photo</th>
+          <th>Statut</th>
+
+
+
+        </tr>
+        <tr *ngFor="let util of utilisateurs" >
+                <td>{{util.id}}</td>
+            <td>{{util.username}}</td>
+            <td>{{util.prenom}}</td>
+            <td>{{util.nom}}</td>
+            <td>{{util.telephone}}</td>
+            <td>{{util.roles}}</td>
+            <td>{{util.imageName}}</td>
+            <td>{{util.statut}}</td>
+
+
+
+        </tr>
+      </table>
+    </div>
+  </div>
 
     

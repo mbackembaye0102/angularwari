@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PartenaireService } from '../services/partenaire.service';
 import { CompteService } from '../services/compte.service';
+import { ICompte} from '../compte';
 
 @Component({
   selector: 'app-compte',
@@ -8,7 +9,7 @@ import { CompteService } from '../services/compte.service';
   styleUrls: ['./compte.component.scss']
 })
 export class CompteComponent implements OnInit {
-  comptes=[];
+  comptes:ICompte[];
   partener=[];
   constructor(private account: CompteService, private part: PartenaireService) { }
 
@@ -27,7 +28,7 @@ export class CompteComponent implements OnInit {
         
     this.part.getAllPartenaire().subscribe(
       res=>{
-        console.log(res);
+        //console.log(res);
         this.partener=res
     
       }, err=>{

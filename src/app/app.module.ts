@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +17,7 @@ import { RetraitComponent } from './retrait/retrait.component';
 import { PartenaireService } from './services/partenaire.service';
 import { HttpModule } from '@angular/http';
 import { InterceptorService } from './services/interceptor.service';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -31,14 +32,16 @@ import { InterceptorService } from './services/interceptor.service';
     CompteComponent,
     DepotComponent,
     EnvoieComponent,
-    RetraitComponent
+    RetraitComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule, 
-    HttpModule
+    HttpModule,
+    ReactiveFormsModule
 
   ],
   providers: [AuthService, PartenaireService,

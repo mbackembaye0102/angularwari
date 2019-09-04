@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class CompteService {
 
-  private url:string = "http://localhost:8000/api/listercompte";
+  private url:string = "http://localhost:8000/api/listercomptes";
   private urldepot:string = "http://localhost:8000/api/listerdepot";
 
 

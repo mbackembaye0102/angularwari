@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">DAARA-DJI</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav">
       <span class="navbar-toggler-icon"></span>
@@ -66,4 +66,5 @@
   <div class="container">
     <router-outlet></router-outlet>
   </div>
+
 

@@ -17,7 +17,9 @@ export class AuthService {
   roles: Array<string>;
 
   constructor(private http: HttpClient
-            ) { }
+            ) { 
+              //this.getToken();
+            }
 //private headers ={headers: new HttpHeaders().set('Authorization', 'Bearer '+localStorage.getItem('token'))};
   login(data)/*: Observable<boolean>*/{
     //let headers =new Headers();

@@ -13,11 +13,26 @@ export class TransactionService {
     const host = "http://localhost:8000/api/envoie";
   
     const formData: FormData= new FormData();
-    formData.append('prenom', envoye.username);
-    formData.append('nom', envoye.prenom);
-    formData.append('typePiece', envoye.nom);
+    formData.append('prenom', envoye.prenom);
+    formData.append('nom', envoye.nom);
+    formData.append('typePiece', envoye.typePiece);
+    formData.append('numeroPiece', envoye.numeroPiece);
     formData.append('telephone', envoye.telephone);
-    formData.append('profil', envoye.profil);
+    formData.append('prenomb', envoye.prenomb);
+    formData.append('nomb', envoye.nomb);
+    formData.append('telephoneb', envoye.telephoneb);
+    formData.append('montant', envoye.montant);
+
+
+      return this.http.post(host, formData);
+  }
+  retrait (retrait){
+    const host = "http://localhost:8000/api/retrait";
+    const formData: FormData= new FormData();
+    formData.append('code', retrait.code);
+    formData.append('typePieceb', retrait.typePieceb);
+    formData.append('numeroPieceb', retrait.numeroPieceb);
+
       return this.http.post(host, formData);
   }
 
