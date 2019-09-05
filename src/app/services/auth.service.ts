@@ -6,6 +6,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +19,7 @@ export class AuthService {
   username:string;
   roles: Array<string>;
 
-  constructor(private http: HttpClient
+  constructor(private http: HttpClient, private router: Router
             ) { 
               //this.getToken();
             }
@@ -117,8 +120,27 @@ loadToken(){
 }
 
 logOut(){
+  Swal.fire({
+    title: 'Are you sure?',
+    text: "Voulez Vous vraiment vous deconnectez?",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Confirmer'
+  }).then((result) => {
+    if (result.value) {
+      Swal.fire(
+        'Déconnecté!',
+        
+        
+      )
+    }
+  })
   localStorage.removeItem('token');
   this.initParams();
+  return this.router.navigate(['/login']);
+
 
 }
 

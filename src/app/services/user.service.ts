@@ -9,6 +9,9 @@ export class UserService {
 
   private url:string = "http://localhost:8000/api/listerprofil";
   private listeruser:string = "http://localhost:8000/api/listeruser";
+  private bloqueruser:string = "http://localhost:8000/api/users/statut/";
+  private url3:string = " http://localhost:8000/api/listeruser";
+
 
 
   constructor( private http:HttpClient) { }
@@ -20,6 +23,13 @@ export class UserService {
 
 getAllUser() : Observable<any[]>  {
   return  this.http.get<any>(this.listeruser);
+}
+getUserPart() : Observable<any[]>  {
+  return  this.http.get<any>(this.url3);
+ }
+ 
+bloquerUtilisateur(id :number){
+  return  this.http.get<any>(this.bloqueruser+id);
 }
 
 

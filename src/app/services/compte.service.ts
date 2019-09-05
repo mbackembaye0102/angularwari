@@ -7,7 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class CompteService {
 
-  private url:string = "http://localhost:8000/api/listercomptes";
+  private url:string = "http://localhost:8000/api/listercompte";
+  private url2:string = "http://localhost:8000/api/listercomptes";
+
+
   private urldepot:string = "http://localhost:8000/api/listerdepot";
 
 
@@ -18,6 +21,11 @@ export class CompteService {
    return  this.http.get<any>(this.url);
   }
 
+
+  getOneCompte() : Observable<any[]>  {
+    return  this.http.get<any>(this.url2);
+   }
+ 
   getAllDepot() : Observable<any[]>  {
     return  this.http.get<any>(this.urldepot);
    }
@@ -40,5 +48,16 @@ export class CompteService {
     formData.append('partenaire', compte.partenaire);
 
     return this.http.post(host, formData);
+  }
+
+  addCompteUser(id : number, compte){
+    const host = "  http://localhost:8000/api/addCompte/";
+  
+    const formData: FormData= new FormData();
+    formData.append('utilisateur', compte.utilisateur);
+    formData.append('partenaire', compte.partenaire);
+
+
+    return this.http.post(host+id, formData);
   }
 }

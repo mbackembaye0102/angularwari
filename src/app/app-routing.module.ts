@@ -8,6 +8,7 @@ import { CompteComponent } from './compte/compte.component';
 import { DepotComponent } from './depot/depot.component';
 import { EnvoieComponent } from './envoie/envoie.component';
 import { RetraitComponent } from './retrait/retrait.component';
+import { CompteuserComponent } from './compteuser/compteuser.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,10 @@ const routes: Routes = [
   {
     path: 'retrait',
     component: RetraitComponent
+  },
+  {
+    path: 'compteuser',
+    component: CompteuserComponent
   }
 
 ];

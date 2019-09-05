@@ -9,6 +9,8 @@ import { AuthService } from '../services/auth.service';
 })
 export class PartenaireComponent implements OnInit {
   partenaires=[];
+  etat=[];
+
   imageUrl: string="/assets/img/default.png ";
   fileToUpload: File=null;
 
@@ -47,5 +49,27 @@ export class PartenaireComponent implements OnInit {
       }
     )
   }
+
+  bloquerPartener (id: number){
+    this.partenaire.bloquerPartenaire(id).subscribe(
+      res => {
+        this.etat =res
+   //      if (res.messages) {
+   //        Swal.fire({
+   //          type: 'success',
+   //          title: res.messages,
+   //          showConfirmButton: true,
+          
+   //        })
+   //  }
+    window.location.reload();
+    },
+    err=>{
+     console.log(err);
+    }
+  )
+   }
+
+
 
 }

@@ -3,6 +3,8 @@ import { UserService } from '../services/user.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-user',
@@ -11,6 +13,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class UserComponent implements OnInit {
 profils;
+etat =[];
 utilisateurs
 imageUrl: string="/assets/img/default.png ";
 fileToUpload: File=null;
@@ -63,6 +66,28 @@ fileToUpload: File=null;
        }
      )
    }
+   bloquerUser (id: number){
+         this.users.bloquerUtilisateur(id).subscribe(
+           res => {
+             this.etat =res
+        //      if (res.messages) {
+        //        Swal.fire({
+        //          type: 'success',
+        //          title: res.messages,
+        //          showConfirmButton: true,
+               
+        //        })
+        //  }
+         window.location.reload();
+         },
+         err=>{
+          console.log(err);
+         }
+       )
+        }
+   
+  
+
 
    utilisateur = new FormGroup({
       username: new FormControl ('', [Validators.required, Validators.minLength(5),

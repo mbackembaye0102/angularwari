@@ -18,6 +18,7 @@ import { PartenaireService } from './services/partenaire.service';
 import { HttpModule } from '@angular/http';
 import { InterceptorService } from './services/interceptor.service';
 import { FooterComponent } from './footer/footer.component';
+import { CompteuserComponent } from './compteuser/compteuser.component';
 
 
 
@@ -33,7 +34,8 @@ import { FooterComponent } from './footer/footer.component';
     DepotComponent,
     EnvoieComponent,
     RetraitComponent,
-    FooterComponent
+    FooterComponent,
+    CompteuserComponent
   ],
   imports: [
     BrowserModule,

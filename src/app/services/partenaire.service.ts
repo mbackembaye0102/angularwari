@@ -15,6 +15,8 @@ export class PartenaireService {
   // }
 
   private url:string = "http://localhost:8000/api/listerpartenaires";
+  private bloquerpartenaire:string = "http://localhost:8000/api/partenaires/statut/";
+
   constructor( private http:HttpClient) { }
 
   
@@ -22,6 +24,9 @@ export class PartenaireService {
    return  this.http.get<IPartenaire[]>(this.url);
 }
 
+bloquerPartenaire(id :number){
+  return  this.http.get<any>(this.bloquerpartenaire+id);
+}
 
 addPartenaire(partener, fileToUpload){
   const host = "http://localhost:8000/api/partenaires";

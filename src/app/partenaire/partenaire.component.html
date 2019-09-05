@@ -96,7 +96,12 @@
             <td>{{part.raisonSocial}}</td>
             <td>{{part.ninea}}</td>
             <td>{{part.adresse}}</td>
-            <td>{{part.statut}}</td>
+            <td> <button type="button" [ngClass]="{
+              'btn-success': part.statut=='debloquer',
+              'btn-danger': part.statut=='bloquer'
+              }"(click)="bloquerPartener(part.id)">
+              {{part.statut}}</button>
+          </td>
 
         </tr>
       </table>

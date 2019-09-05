@@ -28,12 +28,12 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                  <a *ngIf="isAdminPartenaire() || isSuperAdmin()"  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a   class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Compte
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/compte">Create Account</a>
-                    <a *ngIf="isAdminPartenaire()" class="dropdown-item" routerLink="/compte">Account User</a>
+                    <a *ngIf="isAdminPartenaire()" class="dropdown-item" routerLink="/compteuser">Account User</a>
                   </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -58,7 +58,7 @@
       </ul>
       <ul class="navbar-nav">
         <li>
-            <a class="nav-link" routerLink="/login" (click)="logOut()" >Se Deconnecter</a>
+            <a class="nav-link" (click)="logOut()" >Se Deconnecter</a>
         </li>
       </ul>
     </div>
