@@ -36,7 +36,7 @@
             <td>{{c.id}}</td>
             <td>{{c.numeroCompte}}</td>
             <td>{{c.solde}}</td>
-            <td>{{c.partenaire}}</td>
+            <td *ngIf="c.partenaire!=null">{{c.partenaire.entreprise}}</td>
 
         </tr>
       </table>

@@ -21,7 +21,7 @@ export class PartenaireService {
 
   
   getAllPartenaire() : Observable<IPartenaire[]>  {
-   return  this.http.get<IPartenaire[]>(this.url);
+   return  this.http.get<any>(this.url);
 }
 
 bloquerPartenaire(id :number){

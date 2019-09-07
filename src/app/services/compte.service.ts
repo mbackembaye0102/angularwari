@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ICompte } from '../compte';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CompteService {
   private url2:string = "http://localhost:8000/api/listercomptes";
 
 
-  private urldepot:string = "http://localhost:8000/api/listerdepot";
+  private urldepot:string = "http://localhost:8000/api/listerdepotuser";
 
 
   constructor( private http:HttpClient) { }
@@ -22,8 +23,8 @@ export class CompteService {
   }
 
 
-  getOneCompte() : Observable<any[]>  {
-    return  this.http.get<any>(this.url2);
+  getOneCompte() : Observable<ICompte[]>  {
+    return  this.http.get<ICompte[]>(this.url2);
    }
  
   getAllDepot() : Observable<any[]>  {

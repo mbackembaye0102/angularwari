@@ -97,8 +97,10 @@
           <th> Nom</th>
           <th>Telephone</th>
           <th>Rôle</th>
-          <th>Photo</th>
+          <th>Partenaire</th>
           <th>Statut</th>
+
+
 
 
         </tr>
@@ -109,13 +111,14 @@
             <td>{{util.nom}}</td>
             <td>{{util.telephone}}</td>
             <td>{{util.roles}}</td>
-            <td>{{util.imageName}}</td>
+            <td>{{util.partenaire.entreprise}}</td>
             <td> <button type="button" [ngClass]="{
                 'btn-success': util.statut=='debloquer',
                 'btn-danger': util.statut=='bloquer'
                 }"(click)="bloquerUser(util.id)">
                 {{util.statut}}</button>
             </td>
+
         </tr>
       </table>
     </div>

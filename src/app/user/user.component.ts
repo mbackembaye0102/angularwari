@@ -46,11 +46,11 @@ fileToUpload: File=null;
     var reader= new FileReader();
     reader.onload=(event:any)=>{
       this.imageUrl=event.target.result;
-
     }
     reader.readAsDataURL(this.fileToUpload);
    }
     
+
    onsubmit (data:any){
     console.log(data);
     console.log(this.fileToUpload);
@@ -66,6 +66,8 @@ fileToUpload: File=null;
        }
      )
    }
+
+
    bloquerUser (id: number){
          this.users.bloquerUtilisateur(id).subscribe(
            res => {
@@ -85,10 +87,9 @@ fileToUpload: File=null;
          }
        )
         }
-   
+
+
   
-
-
    utilisateur = new FormGroup({
       username: new FormControl ('', [Validators.required, Validators.minLength(5),
         Validators.pattern(/^([a-zA-Z\u00C0-\u00FF]+['-]?[a-zA-Z\u00C0-\u00FF]+){1,30}$/)]),

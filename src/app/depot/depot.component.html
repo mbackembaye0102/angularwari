@@ -37,12 +37,14 @@
           <th> COMPTE</th>
           <th>CAISSIER</th>
 
+
         </tr>
         <tr *ngFor="let d of depots" >
             <td>{{d.montant}}</td>
             <td>{{d.dateDepot}}</td>
             <td>{{d.compte.numeroCompte}}</td>
-            <td>{{d.utilisateur}}</td>
+            <td>{{d.utilisateur.prenom}}</td>
+
 
         </tr>
       </table>
