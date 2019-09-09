@@ -1,38 +1,140 @@
 <app-header></app-header>
 
 <br> <br>
-<h1 align="center"> Retrait</h1>
+<h1 align="center"> RUBRIQUE RETRAIT</h1>
 <br>
-<form #retrait=ngForm (ngSubmit)="onsubmitretrait(retrait.value)">
-    <div class="form-group row col-6 col-md-push-4 offset-md-3">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Code Wari</label>
-        <div class="col">
-        <input type="text" #code ngModel required="required" name="code" class="form-control" id="username" placeholder="Code Wari">
-        </div>
-    </div>
-  
-    <div class="form-group row col-6 col-md-push-4 offset-md-3">
-        <label for="inputPassword3" class="col-sm-2 col-form-label">Type Piece</label>
-        <div class="col">
-        <select class="form-control" #typePieceb ngModel name="typePiece">
-                <option  value="CIN">CIN</option>
-                <option  value="Passeport">Passeport</option>
-                <option  value="Permis">Permis de Conduire</option>
 
-        </select>
+<form #c=ngForm (ngSubmit)="submitcode(c.value)">
+
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Code Wari</label>
+        <div class="col">
+        <input type="text" #code ngModel required="required" name="code" class="form-control" id="inputPassword3" placeholder="Taper votre code wari ">
+    </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <div class="col">
+        <button type="submit" name="valider" class="btn btn-primary"  >RECHERCHER CODE</button>
+        </div>
+    </div>
+</form>
+
+
+
+<div *ngFor="let c of codes " >
+        <h1 align="center"> INFORMATION ENVOYEUR</h1>
+
+ 
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Id </label>
+        <div class="col">
+        <input type="text" disabled value={{c.id}}  class="form-control" id="inputPassword3">
+        </div>
+    </div>
+
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Prenom Envoyeur</label>
+        <div class="col">
+        <input type="text" disabled  value={{c.prenom}} class="form-control" id="inputPassword3" >
+        </div>
+    </div>
+
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Nom Envoyeur</label>
+        <div class="col">
+        <input type="text"  disabled value={{c.nom}}   class="form-control" id="inputPassword3" >
         </div>
     </div>
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Numero Piéce</label>
-        <div class="col">
-        <input type="text" #numeroPieceb ngModel required="required" name="numeroPieceb" class="form-control" id="username" placeholder="Numero Piece">
-        </div>
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Type Piece Envoyeur</label>
+            <div class="col">
+            <input type="text"  disabled value={{c.typePiece}}   class="form-control" id="inputPassword3" >
+            </div>
     </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Numero Piece Envoyeur</label>
+            <div class="col">
+            <input type="text"  disabled value={{c.numeroPiece}}   class="form-control" id="inputPassword3" >
+            </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone Envoyeur</label>
+            <div class="col">
+            <input type="text"  disabled value={{c.telephone}}   class="form-control" id="inputPassword3" >
+            </div>
+    </div>
+
+    <h1 align="center"> INFORMATION BÉNÉFICIAIRE</h1>
+
+        <div class="form-group row col-6 col-md-push-4 offset-md-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Prenom Bénéficiaire</label>
+            <div class="col">
+            <input type="text" disabled  value={{c.prenomb}} class="form-control" id="inputPassword3" >
+            </div>
+        </div>
     
+        <div class="form-group row col-6 col-md-push-4 offset-md-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Nom Bénéficiaire</label>
+            <div class="col">
+            <input type="text"  disabled value={{c.nomb}}   class="form-control" id="inputPassword3" >
+            </div>
+        </div>
+       
+        <div class="form-group row col-6 col-md-push-4 offset-md-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Telephone Bénéficiaire</label>
+                <div class="col">
+                <input type="text"  disabled value={{c.telephoneb}}   class="form-control" id="inputPassword3" >
+                </div>
+        </div>
+        <div class="form-group row col-6 col-md-push-4 offset-md-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Montant Transaction</label>
+                <div class="col">
+                <input type="text"  disabled value={{c.montant}}   class="form-control" id="inputPassword3" >
+                </div>
+        </div>
+        <div class="form-group row col-6 col-md-push-4 offset-md-3">
+                <label for="inputPassword3" class="col-sm-2 col-form-label">Frais Transaction</label>
+                <div class="col">
+                <input type="text"  disabled value={{c.frais}}   class="form-control" id="inputPassword3" >
+                </div>
+        </div>
+        
+
+ 
+   
+</div>
+
+
+
+<form *ngFor="let c of codes "  #f=ngForm (ngSubmit)="onsubmitretrait(f.value)">
+
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label  for="inputPassword3" class="col-sm-2 col-form-label">Code</label>
+        <div class="col">
+            <input type="text"   #code ngModel={{c.code}} name="code" class="form-control" id="inputPassword3" placeholder="Code ">
+    </div>
+    </div>
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Type Piece Beneficiaire</label>
+        <div class="col">
+                <select class="form-control" #typePieceb ngModel name="typePieceb">
+                        <option  value="CIN">CIN</option>
+                        <option  value="Passeport">Passeport</option>
+                        <option  value="Permis">Permis de Conduire</option>
+                </select>
+    </div>
+    </div>
+
+    <div class="form-group row col-6 col-md-push-4 offset-md-3">
+            <label for="inputPassword3" class="col-sm-2 col-form-label">Numero Piéce Beneficiaire</label>
+            <div class="col">
+            <input type="number" #numeroPieceb ngModel required="required" name="numeroPieceb" class="form-control" id="inputPassword3" placeholder="Numero Piece">
+            </div>
+        </div>
+
     <div class="form-group row col-6 col-md-push-4 offset-md-3">
         <div class="col">
-        <button type="submit" name="valider" class="btn btn-primary" >AJOUTER</button>
+        <button type="submit" name="valider" class="btn btn-primary"  >RETIRER</button>
         </div>
     </div>
-    
-    </form>
+</form>

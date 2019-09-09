@@ -28,7 +28,7 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                  <a   class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <a    *ngIf="isSuperAdmin()  || isAdminPartenaire()" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Compte
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -41,8 +41,11 @@
                       Depot
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <a *ngIf="isCaissier()" class="dropdown-item" routerLink="/depot">Money Deposit</a>
+                      <a *ngIf="isCaissier() || isSuperAdmin()" class="dropdown-item" routerLink="/depot">Money Deposit</a>
                     </div>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a *ngIf="isSuperAdmin()" class="dropdown-item" routerLink="/depot">Show Deposit</a>
+                      </div>
                   </li>
                   <li class="nav-item dropdown">
                       <a *ngIf="isAdminPartenaire() || isUser()"  class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

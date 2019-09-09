@@ -3,6 +3,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 
 @Component({
@@ -28,7 +30,9 @@ export class LoginComponent implements OnInit {
     this.auth.login(data)
     .subscribe(
       res => {
-        //console.log(res);
+      
+        console.log(res);
+       
        // localStorage.setItem('token', res.token);
       let jwt=res.body['token'];
      // alert(jwt);
@@ -41,7 +45,13 @@ export class LoginComponent implements OnInit {
         this._router.navigate(['/register'])
         //console.log(res.body["token"]);
       },
-      err => {}
+      err => {
+        Swal.fire({
+          type: 'error',
+          text: 'Login ou Mot de Passe Incorrect',
+        
+        })
+      }
     ) 
   }
 
@@ -58,23 +68,20 @@ export class LoginComponent implements OnInit {
 
   isSuperAdmin(){
     return this.auth.isSuperAdmin();
-
   }
 
   isAdminPartenaire(){
     return this.auth.isAdminPartenaire();
-
   }
 
   isUser(){
     return this.auth.isUser();
-
   }
 
   isCaissier(){
     return this.auth.isCaissier();
-
   }
+
   isAdminSuper(){
     return this.auth.isAdminSuper();
 

@@ -77,7 +77,6 @@ fileToUpload: File=null;
         //          type: 'success',
         //          title: res.messages,
         //          showConfirmButton: true,
-               
         //        })
         //  }
          window.location.reload();
@@ -89,7 +88,6 @@ fileToUpload: File=null;
         }
 
 
-  
    utilisateur = new FormGroup({
       username: new FormControl ('', [Validators.required, Validators.minLength(5),
         Validators.pattern(/^([a-zA-Z\u00C0-\u00FF]+['-]?[a-zA-Z\u00C0-\u00FF]+){1,30}$/)]),
@@ -109,31 +107,25 @@ fileToUpload: File=null;
       {type:'required', message:'Champ username obligatoire '},
       {type:'minlength', message:'veuillez saisir au minimum 5 lettres'},
       {type:'pattern', message:'Ecrivez correctement le username'}
-
-
      ],
      'telephone':[
       {type:'required', message:'Champ telephone obligatoire '},
       {type:'minlength', message:'veuillez saisir au minimum 9 lettres'},
       {type:'maxlength', message:'veuillez saisir au maximum 9 lettres'},
       {type:'pattern', message:'Ecrivez correctement le numero de telephone'}
-
      ],
      'prenom':[
       {type:'required', message:'Champ prenom obligatoire '},
       {type:'minlength', message:'veuillez saisir au minimum 3 lettres'},
       {type:'pattern', message:'Ecrivez correctement le prenom'}
-
      ],
      'nom':[
       {type:'required', message:'Champ prenom obligatoire '},
       {type:'minlength', message:'veuillez saisir au minimum 2 lettres'},
       {type:'pattern', message:'Ecrivez correctement le nom'}
-
      ],
      'profil':[
       {type:'required', message:'Champ role est  obligatoire '}
-
      ]
 
 

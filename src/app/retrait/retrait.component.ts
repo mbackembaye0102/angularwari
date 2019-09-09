@@ -7,19 +7,34 @@ import { TransactionService } from '../services/transaction.service';
   styleUrls: ['./retrait.component.scss']
 })
 export class RetraitComponent implements OnInit {
-
+codes;
   constructor(private transaction : TransactionService) { }
 
   ngOnInit() {
   }
 
-
-  onsubmitretrait (data:any){
+    onsubmitretrait (data:any){
     console.log(data);
          this.transaction.retrait(data)
      .subscribe(
        data=>{
          console.log('Le retrait  à été bien efféctué');
+      
+       }, err=>{
+        console.log(err);
+       }
+     )
+   }
+
+
+
+  submitcode (data:any){
+    console.log(data);
+         this.transaction.rechercheCode(data)
+     .subscribe(
+       data=>{
+       console.log(data);
+        this.codes=data
       
        }, err=>{
         console.log(err);

@@ -7,32 +7,33 @@ import { CompteService } from '../services/compte.service';
   styleUrls: ['./depot.component.scss']
 })
 export class DepotComponent implements OnInit {
-comptes;
-depots=[];
-constructor(private account: CompteService) { }
 
+constructor(private account: CompteService) { }
+comptes;
+compte=[];
+depots=[];
   ngOnInit() {
     
-    this.account.getAllCompte().subscribe(
-      res=>{
-        console.log(res);
-        this.comptes=res
+    // this.account.getAllCompte().subscribe(
+    //   res=>{
+    //     console.log(res);
+    //     this.comptes=res
     
-      }, err=>{
-        console.log(err);
-      }
-    ) ;
+    //   }, err=>{
+    //     console.log(err);
+    //   }
+    // ) ;
 
         
-    this.account.getAllDepot().subscribe(
-      res=>{
-        console.log(res);
-        this.depots=res
+    // this.account.getAllDepot().subscribe(
+    //   res=>{
+    //     console.log(res);
+    //     this.depots=res
     
-      }, err=>{
-        console.log(err);
-      }
-    ) 
+    //   }, err=>{
+    //     console.log(err);
+    //   }
+    // ) 
 
   }
 
@@ -42,6 +43,20 @@ constructor(private account: CompteService) { }
      .subscribe(
        data=>{
          console.log('Depôt effectué  avec succés');
+      
+       }, err=>{
+        console.log(err);
+       }
+     )
+   }
+
+   submitcompte (data:any){
+    console.log(data);
+         this.account.rechercheCompte(data)
+     .subscribe(
+       data=>{
+        console.log('code valide');
+        this.compte=data
       
        }, err=>{
         console.log(err);

@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
+  private recherchecode:string = "http://localhost:8000/api/recherchecode";
+
+  rechercheCode(data) : Observable<any[]>  {
+
+    return  this.http.post<any>(this.recherchecode,data);
+   }
 
 
   constructor( private http:HttpClient) { }
@@ -26,6 +33,8 @@ export class TransactionService {
 
       return this.http.post(host, formData);
   }
+
+  
   retrait (retrait){
     const host = "http://localhost:8000/api/retrait";
     const formData: FormData= new FormData();

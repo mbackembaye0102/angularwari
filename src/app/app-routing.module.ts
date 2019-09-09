@@ -9,6 +9,7 @@ import { DepotComponent } from './depot/depot.component';
 import { EnvoieComponent } from './envoie/envoie.component';
 import { RetraitComponent } from './retrait/retrait.component';
 import { CompteuserComponent } from './compteuser/compteuser.component';
+import { ShowdepositComponent } from './showdeposit/showdeposit.component';
 
 
 const routes: Routes = [
@@ -55,6 +56,10 @@ const routes: Routes = [
   {
     path: 'compteuser',
     component: CompteuserComponent
+  },
+  {
+    path: 'showdeposit',
+    component: ShowdepositComponent
   }
 
 ];

@@ -11,6 +11,8 @@ export class UserService {
   private listeruser:string = "http://localhost:8000/api/listeruser";
   private bloqueruser:string = "http://localhost:8000/api/users/statut/";
   private url3:string = " http://localhost:8000/api/listeruser";
+  private rechercheutilisateur:string = " http://localhost:8000/api/rechercheuser";
+
 
 
 
@@ -32,6 +34,11 @@ bloquerUtilisateur(id :number){
   return  this.http.get<any>(this.bloqueruser+id);
 }
 
+
+rechercheUser(data) : Observable<any[]>  {
+
+  return  this.http.post<any>(this.rechercheutilisateur,data);
+ }
 
 
 addUser(user, fileToUpload){

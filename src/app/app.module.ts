@@ -19,6 +19,7 @@ import { HttpModule } from '@angular/http';
 import { InterceptorService } from './services/interceptor.service';
 import { FooterComponent } from './footer/footer.component';
 import { CompteuserComponent } from './compteuser/compteuser.component';
+import { ShowdepositComponent } from './showdeposit/showdeposit.component';
 
 
 
@@ -35,7 +36,8 @@ import { CompteuserComponent } from './compteuser/compteuser.component';
     EnvoieComponent,
     RetraitComponent,
     FooterComponent,
-    CompteuserComponent
+    CompteuserComponent,
+    ShowdepositComponent
   ],
   imports: [
     BrowserModule,

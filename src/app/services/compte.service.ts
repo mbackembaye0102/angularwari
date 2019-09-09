@@ -13,6 +13,8 @@ export class CompteService {
 
 
   private urldepot:string = "http://localhost:8000/api/listerdepotuser";
+  private recherchecompte:string = "http://localhost:8000/api/recherchecompte";
+
 
 
   constructor( private http:HttpClient) { }
@@ -30,6 +32,10 @@ export class CompteService {
   getAllDepot() : Observable<any[]>  {
     return  this.http.get<any>(this.urldepot);
    }
+   rechercheCompte(data) : Observable<any[]>  {
+
+    return  this.http.post<any>(this.recherchecompte,data);
+   }
  
 
   addAccount(account){
@@ -44,21 +50,17 @@ export class CompteService {
 
   addCompte(compte){
     const host = " http://localhost:8000/api/comptes";
-  
     const formData: FormData= new FormData();
     formData.append('partenaire', compte.partenaire);
-
     return this.http.post(host, formData);
   }
 
-  addCompteUser(id : number, compte){
-    const host = "  http://localhost:8000/api/addCompte/";
-  
+  addCompteUser(data){
+    const host = "http://localhost:8000/api/addCompte";
+    console.log(data);
     const formData: FormData= new FormData();
-    formData.append('utilisateur', compte.utilisateur);
-    formData.append('partenaire', compte.partenaire);
-
-
-    return this.http.post(host+id, formData);
+   formData.append('username', data.username);
+   formData.append('compte', data.compte);
+    return this.http.post(host, formData);
   }
 }

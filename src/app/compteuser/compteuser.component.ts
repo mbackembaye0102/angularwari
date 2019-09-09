@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { CompteService } from '../services/compte.service';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+
 
 @Component({
   selector: 'app-compteuser',
@@ -8,7 +10,8 @@ import { CompteService } from '../services/compte.service';
   styleUrls: ['./compteuser.component.scss']
 })
 export class CompteuserComponent implements OnInit {
-comptes; 
+comptes;
+util; 
 utilisateurs;
   constructor(private account: CompteService, private user: UserService) { }
 
@@ -36,13 +39,29 @@ utilisateurs;
   }
 
   onsubmit (data:any){
-    console.log(data);
-         this.account.addCompte(data)
+    //console.log(data);
+         this.account.addCompteUser(data)
      .subscribe(
        data=>{
          console.log('Compte attribué  avec succés');
       
        }, err=>{
+        console.log(err);
+       }
+     )
+   }
+
+
+   submitcompteuser(data:any){
+    console.log(data);
+         this.user.rechercheUser(data)
+     .subscribe(
+       data=>{
+        //console.log('code valide');
+        this.util=data
+      
+       }, err=>{
+      
         console.log(err);
        }
      )

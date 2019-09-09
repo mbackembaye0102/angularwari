@@ -53,8 +53,6 @@ export class AuthService {
 saveToken(jwt:string){
   localStorage.setItem('token',jwt);
  // const authorization=localStorage.getItem('token');
- 
-
  this.jwt=jwt;
   this.parseJWT();
   //return authorization;
@@ -83,34 +81,31 @@ getRole(){
 
 isSuperAdmin(){
   return this.roles.indexOf('ROLE_SUPER_ADMIN')>=0;
-  
 }
 
 isAdminPartenaire(){
   return this.roles.indexOf('ROLE_ADMIN_PARTENAIRE')>=0;
-
 }
 
 isUser(){
   return this.roles.indexOf('ROLE_USER')>=0;
-
 }
 
 isCaissier(){
   return this.roles.indexOf('ROLE_CAISSIER')>=0;
-
 }
+
 isAdminSuper(){
   return this.roles.indexOf('ROLE_ADMIN_SUPER')>=0;
-
 }
+
+
 isAdmin(){
   return this.roles.indexOf('ROLE_ADMIN')>=0;
-
 }
+
 isAuthenticated(){
-return this.roles && (this.isAdmin() || this.isUser()
-);
+return this.roles && (this.isAdmin() || this.isUser());
 
 }
 
@@ -120,23 +115,23 @@ loadToken(){
 }
 
 logOut(){
-  Swal.fire({
-    title: 'Are you sure?',
-    text: "Voulez Vous vraiment vous deconnectez?",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Confirmer'
-  }).then((result) => {
-    if (result.value) {
-      Swal.fire(
-        'Déconnecté!',
+  // Swal.fire({
+  //   title: 'Are you sure?',
+  //   text: "Voulez Vous vraiment vous deconnectez?",
+  //   type: 'warning',
+  //   showCancelButton: true,
+  //   confirmButtonColor: '#3085d6',
+  //   cancelButtonColor: '#d33',
+  //   confirmButtonText: 'Confirmer'
+  // }).then((result) => {
+  //   if (result.value) {
+  //     Swal.fire(
+  //       'Déconnecté!',
         
         
-      )
-    }
-  })
+  //     )
+  //   }
+  // })
   localStorage.removeItem('token');
   this.initParams();
   return this.router.navigate(['/login']);
